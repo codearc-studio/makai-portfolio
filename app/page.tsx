@@ -1,65 +1,369 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+const skills = [
+  { name: "HTML", icon: "/logos/html.svg" },
+  { name: "CSS", icon: "/logos/css.svg" },
+  { name: "JavaScript", icon: "/logos/js.svg" },
+  { name: "React", icon: "/logos/react.svg" },
+  { name: "Next.js", icon: "/logos/nextjs.svg" },
+  { name: "Tailwind", icon: "/logos/tailwind.svg" },
+  { name: "Accessibility", icon: "/logos/accessibility.svg" },
+  { name: "Wix", icon: "/logos/wix.svg" },
+];
+
+const certifications = [
+  {
+    name: "Google Analytics Certification",
+    badge: "/certifications/gabadge.png",
+    certificate: "/certifications/gacert.jpg",
+    note: "Analytics foundations and measurement.",
+  },
+  {
+    name: "Wix Accessibility Certificate",
+    badge: "/certifications/Accessibility_badge_1.PNG",
+    certificate: "/certifications/WixAccesibility.png",
+    note: "Accessibility-first site building.",
+  },
+  {
+    name: "Canva Graphic Design Certificate",
+    badge: "/certifications/canvadesignbadge.png",
+    certificate: "/certifications/canvadesigncert.png",
+    note: "Visual layout and design basics.",
+  },
+];
+
+const tools = [
+  { name: "Xcode", href: "https://developer.apple.com/xcode/", icon: "/logos/xcode.svg" },
+  { name: "Figma", href: "https://figma.com", icon: "/logos/figma.svg" },
+  { name: "Notion", href: "https://notion.so", icon: "/logos/notion.svg" },
+  { name: "Canva", href: "https://canva.com", icon: "/logos/canva.svg" },
+];
 
 export default function Home() {
+  const [activeCert, setActiveCert] = useState<
+    (typeof certifications)[number] | null
+  >(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsClosing(true);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (!isClosing) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setActiveCert(null);
+      setIsClosing(false);
+    }, 180);
+
+    return () => window.clearTimeout(timeout);
+  }, [isClosing]);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-8 sm:px-8 lg:px-10">
+      <header className="flex items-center justify-between gap-4 border-b border-[color:var(--border)] pb-5">
+        <a
+          href="#top"
+          className="text-sm font-medium tracking-[0.16em] text-[color:var(--foreground)] transition-opacity hover:opacity-70"
+        >
+          CodeArc.studio
+        </a>
+        <nav aria-label="Primary" className="flex items-center gap-5 text-sm">
+          <a
+            className="text-[color:var(--muted)] transition-colors hover:text-[color:var(--foreground)]"
+            href="#about"
+          >
+            About
+          </a>
+          <a
+            className="text-[color:var(--muted)] transition-colors hover:text-[color:var(--foreground)]"
+            href="#contact"
+          >
+            Contact
+          </a>
+        </nav>
+      </header>
+
+      <div className="flex flex-1 flex-col gap-20 py-12 sm:py-16" id="top">
+        <section className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+          <div className="space-y-7">
+            <p className="text-sm font-medium tracking-[0.24em] text-[color:var(--accent)] uppercase">
+              Web developer
+            </p>
+            <div className="space-y-4">
+              <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-6xl lg:text-[4.8rem]">
+                Makai O&apos;Neill
+              </h1>
+              <p className="max-w-2xl text-lg leading-8 text-[color:var(--muted)] sm:text-xl">
+                Building clean websites and products. Indie maker.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <aside className="rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--panel)] p-6 shadow-[0_12px_30px_rgba(15,23,42,0.03)]">
+              <p className="text-xs font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
+                Available for freelance
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+                I work under CodeArc.studio, keeping the focus on clear
+                interfaces, steady shipping, and thoughtful web work.
+              </p>
+            </aside>
+            <div className="rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--background)] px-6 py-5">
+              <p className="text-sm leading-7 text-[color:var(--muted)]">
+                Minimal, polished, and easy to maintain — the kind of site that
+                lets the work speak first.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="about"
+          className="grid gap-10 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
+          <div className="space-y-4">
+            <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
+              About
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-4xl">
+              Quietly focused on thoughtful web work.
+            </h2>
+          </div>
+          <p className="max-w-2xl text-base leading-8 text-[color:var(--muted)] sm:text-lg">
+            I&apos;m an indie developer building websites and web products under
+            CodeArc.studio. I like work that feels calm, useful, and easy to
+            trust — whether that&apos;s a freelance project, a studio idea, or a
+            small product I&apos;m shipping on my own.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        </section>
+
+        <section className="grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="space-y-3">
+            <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
+              Skills
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-4xl">
+              Tools I reach for most.
+            </h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {skills.map((skill) => (
+              <div
+                key={skill.name}
+                className="flex items-center gap-3 rounded-[1rem] border border-[color:var(--border)] bg-[color:var(--panel)] px-4 py-3 text-sm text-[color:var(--foreground)]"
+              >
+                <span className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src={skill.icon}
+                    alt={`${skill.name} logo`}
+                    fill
+                    className="object-contain p-1.5"
+                  />
+                </span>
+                <span>{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="space-y-3">
+            <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
+              Certifications
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-4xl">
+              Selected certificates.
+            </h2>
+          </div>
+
+          <div className="grid gap-5">
+            {certifications.map((certification) => (
+              <button
+                key={certification.name}
+                type="button"
+                onClick={() => {
+                  setActiveCert(certification);
+                  setIsClosing(false);
+                }}
+                className="text-left rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--panel)] p-5 shadow-[0_10px_28px_rgba(15,23,42,0.03)] transition-transform hover:-translate-y-0.5"
+              >
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex items-start gap-4">
+                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white">
+                      <Image
+                        src={certification.badge}
+                        alt={`${certification.name} badge`}
+                        fill
+                        className="object-contain p-2"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-lg font-semibold tracking-tight text-[color:var(--foreground)]">
+                        {certification.name}
+                      </h3>
+                      <p className="text-sm text-[color:var(--muted)]">
+                        {certification.note}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-xs font-medium tracking-[0.18em] text-[color:var(--accent)] uppercase">
+                    View full size
+                  </span>
+                </div>
+
+                <div className="mt-5 space-y-2">
+                  <p className="text-xs font-medium tracking-[0.18em] text-[color:var(--muted)] uppercase">
+                    Certificate
+                  </p>
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-[1.25rem] border border-[color:var(--border)] bg-white">
+                    <Image
+                      src={certification.certificate}
+                      alt={`${certification.name} certificate`}
+                      fill
+                      className="object-contain p-4"
+                    />
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="space-y-3">
+            <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
+              Uses / Setup
+            </p>
+            <h2 className="text-3xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-4xl">
+              The tools I keep close.
+            </h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {tools.map((tool) => (
+              <a
+                key={tool.name}
+                href={tool.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-[1rem] border border-[color:var(--border)] bg-[color:var(--panel)] px-5 py-4 text-sm text-[color:var(--foreground)] transition-colors hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+              >
+                <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
+                  <Image
+                    src={tool.icon}
+                    alt={`${tool.name} logo`}
+                    fill
+                    className="object-contain p-1.5"
+                  />
+                </span>
+                <span>{tool.name}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="contact"
+          className="overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--foreground)] text-[color:var(--background)]"
+        >
+          <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div className="space-y-4">
+              <p className="text-sm font-medium tracking-[0.22em] text-white/60 uppercase">
+                Contact
+              </p>
+              <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Want a clean site, product page, or small web build?
+              </h2>
+              <p className="max-w-xl text-sm leading-7 text-white/72 sm:text-base">
+                I own CodeArc.studio, and I keep the process simple: a direct
+                conversation, a clear scope, and careful execution.
+              </p>
+            </div>
+
+            <div className="grid gap-3">
+              <a
+                href="https://codearc.studio"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-[color:var(--accent)] bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_24px_rgba(26,143,147,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#177b7f]"
+              >
+                codearc.studio
+              </a>
+              <a
+                href="mailto:makai@codearc.studio"
+                className="rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
+              >
+                makai@codearc.studio
+              </a>
+              <a
+                href="https://github.com/codearc-studio"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <footer className="pb-2 text-sm text-[color:var(--muted)]">
+          <p>© 2026 Makai O&apos;Neill. All rights reserved.</p>
+        </footer>
+      </div>
+
+      {activeCert ? (
+        <div
+          role="presentation"
+          className={`fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-200 ease-out ${
+            isClosing ? "bg-black/0 opacity-0" : "bg-black/70 opacity-100"
+          }`}
+          onClick={() => setIsClosing(true)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={activeCert.name}
+            className={`relative max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition-all duration-200 ease-out ${
+              isClosing
+                ? "translate-y-4 scale-[0.98] opacity-0"
+                : "translate-y-0 scale-100 opacity-100"
+            }`}
+            onClick={(event) => event.stopPropagation()}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <button
+              type="button"
+              onClick={() => setIsClosing(true)}
+              className="absolute right-4 top-4 z-10 rounded-full border border-black/10 bg-white/90 px-3 py-2 text-xs font-medium text-black shadow-sm"
+            >
+              Close
+            </button>
+            <div className="relative aspect-[16/10] max-h-[92vh] w-full">
+              <Image
+                src={activeCert.certificate}
+                alt={activeCert.name}
+                fill
+                className="object-contain p-4 sm:p-8"
+                priority
+              />
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      ) : null}
+    </main>
   );
 }
