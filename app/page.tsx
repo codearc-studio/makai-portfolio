@@ -72,9 +72,48 @@ export default function Home() {
     return () => window.clearTimeout(timeout);
   }, [isClosing]);
 
+  useEffect(() => {
+    const motionSections = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-motion-section]"),
+    );
+
+    if (!motionSections.length) {
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      motionSections.forEach((section) => section.classList.add("motion-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          entry.target.classList.add("motion-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.24,
+        rootMargin: "0px 0px -8% 0px",
+      },
+    );
+
+    motionSections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-8 sm:px-8 lg:px-10">
-      <header className="flex items-center justify-between gap-4 border-b border-[color:var(--border)] pb-5">
+      <header
+        data-motion-section
+        className="motion-group motion-fade-up motion-d1 flex items-center justify-between gap-4 border-b border-[color:var(--border)] pb-5"
+      >
         <a
           href="#top"
           className="text-sm font-medium tracking-[0.16em] text-[color:var(--foreground)] transition-opacity hover:opacity-70"
@@ -98,35 +137,36 @@ export default function Home() {
       </header>
 
       <div className="flex flex-1 flex-col gap-20 py-12 sm:py-16" id="top">
-        <section className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
+        <section
+          data-motion-section
+          className="motion-group motion-fade-up motion-d2 grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-end"
+        >
           <div className="space-y-7">
             <p className="text-sm font-medium tracking-[0.24em] text-[color:var(--accent)] uppercase">
-              Web developer
+              Independent Web Developer
             </p>
             <div className="space-y-4">
               <h1 className="max-w-3xl text-5xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-6xl lg:text-[4.8rem]">
                 Makai O&apos;Neill
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-[color:var(--muted)] sm:text-xl">
-                Building clean websites and products. Indie maker.
+                Clean websites. Thoughtful builds. Shipped with care.
               </p>
             </div>
           </div>
 
           <div className="grid gap-4">
-            <aside className="rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--panel)] p-6 shadow-[0_12px_30px_rgba(15,23,42,0.03)]">
+            <aside className="motion-card rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--panel)] p-6 shadow-[0_12px_30px_rgba(15,23,42,0.03)]">
               <p className="text-xs font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
                 Available for freelance
               </p>
               <p className="mt-3 text-sm leading-7 text-[color:var(--muted)]">
-                I work under CodeArc.studio, keeping the focus on clear
-                interfaces, steady shipping, and thoughtful web work.
+                I take on projects through CodeArc Studio — direct process, clear scope, careful work.
               </p>
             </aside>
-            <div className="rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--background)] px-6 py-5">
+            <div className="motion-card rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--background)] px-6 py-5">
               <p className="text-sm leading-7 text-[color:var(--muted)]">
-                Minimal, polished, and easy to maintain — the kind of site that
-                lets the work speak first.
+                Minimal, fast, and built to last — the kind of site that gets out of the way and lets the work speak.
               </p>
             </div>
           </div>
@@ -134,25 +174,23 @@ export default function Home() {
 
         <section
           id="about"
-          className="grid gap-10 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+          data-motion-section
+          className="motion-group motion-fade-up motion-d3 grid gap-10 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]"
         >
           <div className="space-y-4">
             <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
               About
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-4xl">
-              Quietly focused on thoughtful web work.
-            </h2>
           </div>
           <p className="max-w-2xl text-base leading-8 text-[color:var(--muted)] sm:text-lg">
-            I&apos;m an indie developer building websites and web products under
-            CodeArc.studio. I like work that feels calm, useful, and easy to
-            trust — whether that&apos;s a freelance project, a studio idea, or a
-            small product I&apos;m shipping on my own.
+            I build websites and web products through CodeArc Studio, my independent dev practice. Clean interfaces, careful execution, and work that&apos;s easy to trust — whether it&apos;s a freelance project or something I&apos;m shipping on my own.
           </p>
         </section>
 
-        <section className="grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <section
+          data-motion-section
+          className="motion-group motion-fade-up motion-d4 grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
           <div className="space-y-3">
             <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
               Skills
@@ -162,16 +200,17 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {skills.map((skill) => (
+            {skills.map((skill, index) => (
               <div
                 key={skill.name}
-                className="flex items-center gap-3 rounded-[1rem] border border-[color:var(--border)] bg-[color:var(--panel)] px-4 py-3 text-sm text-[color:var(--foreground)]"
+                className={`motion-fade-up motion-card motion-d${(index % 6) + 1} flex items-center gap-3 rounded-[1rem] border border-[color:var(--border)] bg-[color:var(--panel)] px-4 py-3 text-sm text-[color:var(--foreground)]`}
               >
                 <span className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
                   <Image
                     src={skill.icon}
                     alt={`${skill.name} logo`}
                     fill
+                    sizes="36px"
                     className="object-contain p-1.5"
                   />
                 </span>
@@ -181,7 +220,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <section
+          data-motion-section
+          className="motion-group motion-fade-up motion-d5 grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
           <div className="space-y-3">
             <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
               Certifications
@@ -192,7 +234,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-5">
-            {certifications.map((certification) => (
+            {certifications.map((certification, index) => (
               <button
                 key={certification.name}
                 type="button"
@@ -200,7 +242,7 @@ export default function Home() {
                   setActiveCert(certification);
                   setIsClosing(false);
                 }}
-                className="text-left rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--panel)] p-5 shadow-[0_10px_28px_rgba(15,23,42,0.03)] transition-transform hover:-translate-y-0.5"
+                className={`motion-fade-up motion-card motion-d${(index % 6) + 1} text-left rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--panel)] p-5 shadow-[0_10px_28px_rgba(15,23,42,0.03)]`}
               >
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex items-start gap-4">
@@ -209,6 +251,7 @@ export default function Home() {
                         src={certification.badge}
                         alt={`${certification.name} badge`}
                         fill
+                        sizes="56px"
                         className="object-contain p-2"
                       />
                     </div>
@@ -235,6 +278,7 @@ export default function Home() {
                       src={certification.certificate}
                       alt={`${certification.name} certificate`}
                       fill
+                      sizes="(min-width: 1024px) 42rem, (min-width: 640px) 80vw, 100vw"
                       className="object-contain p-4"
                     />
                   </div>
@@ -244,7 +288,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]">
+        <section
+          data-motion-section
+          className="motion-group motion-fade-up motion-d6 grid gap-8 border-t border-[color:var(--border)] pt-12 lg:grid-cols-[0.85fr_1.15fr]"
+        >
           <div className="space-y-3">
             <p className="text-sm font-medium tracking-[0.22em] text-[color:var(--accent)] uppercase">
               Uses / Setup
@@ -254,19 +301,20 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {tools.map((tool) => (
+            {tools.map((tool, index) => (
               <a
                 key={tool.name}
                 href={tool.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-3 rounded-[1rem] border border-[color:var(--border)] bg-[color:var(--panel)] px-5 py-4 text-sm text-[color:var(--foreground)] transition-colors hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]"
+                className={`motion-fade-up motion-card motion-d${(index % 6) + 1} flex items-center gap-3 rounded-[1rem] border border-[color:var(--border)] bg-[color:var(--panel)] px-5 py-4 text-sm text-[color:var(--foreground)] transition-colors hover:border-[color:var(--accent)] hover:text-[color:var(--accent)]`}
               >
                 <span className="relative flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white">
                   <Image
                     src={tool.icon}
                     alt={`${tool.name} logo`}
                     fill
+                    sizes="32px"
                     className="object-contain p-1.5"
                   />
                 </span>
@@ -278,7 +326,8 @@ export default function Home() {
 
         <section
           id="contact"
-          className="overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--foreground)] text-[color:var(--background)]"
+          data-motion-section
+          className="motion-group motion-fade-up motion-d7 overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--foreground)] text-[color:var(--background)]"
         >
           <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <div className="space-y-4">
@@ -286,11 +335,10 @@ export default function Home() {
                 Contact
               </p>
               <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Want a clean site, product page, or small web build?
+                Want to work together?
               </h2>
               <p className="max-w-xl text-sm leading-7 text-white/72 sm:text-base">
-                I own CodeArc.studio, and I keep the process simple: a direct
-                conversation, a clear scope, and careful execution.
+                I take on freelance projects through CodeArc Studio — direct communication, clear scope, no fluff.
               </p>
             </div>
 
@@ -299,13 +347,13 @@ export default function Home() {
                 href="https://codearc.studio"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-[color:var(--accent)] bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_24px_rgba(26,143,147,0.28)] transition-transform hover:-translate-y-0.5 hover:bg-[#177b7f]"
+                className="motion-button rounded-full border border-[color:var(--accent)] bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_24px_rgba(26,143,147,0.28)] hover:bg-[#177b7f]"
               >
                 codearc.studio
               </a>
               <a
                 href="mailto:makai@codearc.studio"
-                className="rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
+                className="motion-button rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
               >
                 makai@codearc.studio
               </a>
@@ -313,18 +361,21 @@ export default function Home() {
                 href="https://github.com/codearc-studio"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
+                className="motion-button rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
               >
                 GitHub
               </a>
             </div>
           </div>
         </section>
-
-        <footer className="pb-2 text-sm text-[color:var(--muted)]">
-          <p>© 2026 Makai O&apos;Neill. All rights reserved.</p>
-        </footer>
       </div>
+
+      <footer
+        data-motion-section
+        className="motion-group motion-fade motion-d8 mt-4 pb-2 text-sm text-[color:var(--muted)]"
+      >
+        <p>© 2026 Makai O&apos;Neill. All rights reserved.</p>
+      </footer>
 
       {activeCert ? (
         <div
@@ -357,6 +408,7 @@ export default function Home() {
                 src={activeCert.certificate}
                 alt={activeCert.name}
                 fill
+                sizes="(min-width: 1024px) 64rem, 100vw"
                 className="object-contain p-4 sm:p-8"
                 priority
               />
