@@ -196,7 +196,7 @@ export default function Home() {
               Skills
             </p>
             <h2 className="text-3xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-4xl">
-              Tools I reach for most.
+              Core skills I use daily.
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -297,7 +297,7 @@ export default function Home() {
               Uses / Setup
             </p>
             <h2 className="text-3xl font-semibold tracking-tight text-[color:var(--foreground)] sm:text-4xl">
-              The tools I keep close.
+              My current setup and toolkit.
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
