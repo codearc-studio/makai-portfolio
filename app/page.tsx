@@ -344,26 +344,70 @@ export default function Home() {
 
             <div className="grid gap-3">
               <a
+                href="mailto:makai@codearc.studio"
+                className="motion-button flex items-center gap-2 rounded-full border border-[color:var(--accent)] bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_24px_rgba(26,143,147,0.28)] hover:bg-[#177b7f]"
+              >
+                <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+                  <Image
+                    src="/logos/email.svg"
+                    alt="Email"
+                    fill
+                    sizes="20px"
+                    className="object-contain"
+                  />
+                </span>
+                makai@codearc.studio
+              </a>
+              <a
                 href="https://codearc.studio"
                 target="_blank"
                 rel="noreferrer"
-                className="motion-button rounded-full border border-[color:var(--accent)] bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-white shadow-[0_10px_24px_rgba(26,143,147,0.28)] hover:bg-[#177b7f]"
+                className="motion-button flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
               >
+                <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+                  <Image
+                    src="/logos/codearc.svg"
+                    alt="CodeArc Studio"
+                    fill
+                    sizes="20px"
+                    className="object-contain"
+                  />
+                </span>
                 codearc.studio
-              </a>
-              <a
-                href="mailto:makai@codearc.studio"
-                className="motion-button rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
-              >
-                makai@codearc.studio
               </a>
               <a
                 href="https://github.com/codearc-studio"
                 target="_blank"
                 rel="noreferrer"
-                className="motion-button rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
+                className="motion-button flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
               >
+                <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+                  <Image
+                    src="/logos/github.svg"
+                    alt="GitHub"
+                    fill
+                    sizes="20px"
+                    className="object-contain"
+                  />
+                </span>
                 GitHub
+              </a>
+              <a
+                href="https://g.dev/makai"
+                target="_blank"
+                rel="noreferrer"
+                className="motion-button flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:border-white/30 hover:bg-white/5"
+              >
+                <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
+                  <Image
+                    src="/logos/google.svg"
+                    alt="Google Developer Profile"
+                    fill
+                    sizes="20px"
+                    className="object-contain"
+                  />
+                </span>
+                Google Developer Profile
               </a>
             </div>
           </div>
