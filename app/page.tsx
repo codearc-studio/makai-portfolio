@@ -367,7 +367,7 @@ export default function Home() {
                 <article
                   key={project.name}
                   data-motion-section
-                  className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] xl:grid-cols-[1.33fr_0.67fr]"
+                  className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] xl:grid-cols-2"
                 >
                   <div
                     className={`project-media relative overflow-hidden ${project.mediaClass} ${
@@ -379,7 +379,7 @@ export default function Home() {
                       alt={project.imageAlt}
                       width={project.imageWidth}
                       height={project.imageHeight}
-                      sizes="(min-width: 1024px) 58vw, 100vw"
+                      sizes="(min-width: 1280px) 50vw, 100vw"
                       className="project-image"
                       unoptimized
                     />
