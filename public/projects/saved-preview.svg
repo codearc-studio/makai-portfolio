@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Saved memory app concept</title>
+  <desc id="desc">A calm collection of memory photographs and a rotating photo widget.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5eee7"/>
+      <stop offset="0.55" stop-color="#e9ddd2"/>
+      <stop offset="1" stop-color="#d9c5b4"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#aac6d7"/>
+      <stop offset="1" stop-color="#efd8c4"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#4a3324" flood-opacity=".16"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" rx="70" fill="url(#bg)"/>
+  <circle cx="1370" cy="120" r="250" fill="#fff" opacity=".18"/>
+  <circle cx="160" cy="890" r="330" fill="#fff" opacity=".12"/>
+
+  <g transform="translate(130 142)">
+    <text x="0" y="0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="28" font-weight="650" fill="#745e4d" letter-spacing="5">SAVED</text>
+    <text x="0" y="82" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="74" font-weight="700" fill="#261f1a">A little place for</text>
+    <text x="0" y="160" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="74" font-weight="700" fill="#261f1a">the moments you keep.</text>
+    <text x="0" y="218" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="26" fill="#745e4d">Memories that quietly come back to you.</text>
+  </g>
+
+  <g transform="translate(945 128)" filter="url(#shadow)">
+    <rect x="0" y="0" width="500" height="430" rx="54" fill="#faf7f3"/>
+    <rect x="28" y="28" width="444" height="296" rx="34" fill="url(#sky)"/>
+    <circle cx="365" cy="97" r="42" fill="#fff4cf" opacity=".9"/>
+    <path d="M28 260 C135 188 240 245 330 205 C389 179 431 194 472 225 L472 324 L28 324Z" fill="#75917d" opacity=".84"/>
+    <path d="M28 285 C140 245 210 300 310 264 C382 238 430 255 472 276 L472 324 L28 324Z" fill="#546f62" opacity=".88"/>
+    <text x="34" y="368" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="18" font-weight="650" fill="#261f1a">SEPTEMBER 6, 2025</text>
+    <text x="34" y="400" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="23" fill="#745e4d">A late summer drive home</text>
+  </g>
+
+  <g transform="translate(170 510) rotate(-7 250 170)" filter="url(#shadow)">
+    <rect width="480" height="356" rx="28" fill="#fffaf5"/>
+    <rect x="24" y="24" width="432" height="258" rx="15" fill="#b9ced0"/>
+    <path d="M24 212 L150 126 L250 201 L335 142 L456 228 L456 282 L24 282Z" fill="#607c79"/>
+    <circle cx="102" cy="80" r="35" fill="#f5d59b"/>
+    <text x="26" y="325" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="20" fill="#5f4d40">Cape May · 2024</text>
+  </g>
+
+  <g transform="translate(560 585) rotate(6 220 150)" filter="url(#shadow)">
+    <rect width="430" height="310" rx="28" fill="#fffaf5"/>
+    <rect x="22" y="22" width="386" height="218" rx="15" fill="#d8b59d"/>
+    <rect x="60" y="110" width="310" height="130" rx="14" fill="#8c6654"/>
+    <circle cx="180" cy="142" r="54" fill="#ead4b2"/>
+    <circle cx="277" cy="144" r="52" fill="#c99074"/>
+    <text x="24" y="280" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="20" fill="#5f4d40">Sunday dinner · 2025</text>
+  </g>
+
+  <g transform="translate(1058 640)">
+    <rect width="352" height="178" rx="44" fill="#2b2521" opacity=".93"/>
+    <circle cx="55" cy="54" r="10" fill="#e6b990"/>
+    <text x="82" y="61" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="17" font-weight="650" fill="#fffaf5">MEMORY WIDGET</text>
+    <text x="40" y="116" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="25" fill="#fffaf5">A different moment,</text>
+    <text x="40" y="148" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="25" fill="#fffaf5">throughout your day.</text>
+  </g>
+</svg>

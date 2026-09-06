@@ -12,30 +12,71 @@ const projects = [
       "Personalized weather that learns what the forecast feels like to you, then turns it into guidance that is actually useful.",
     tags: ["iOS", "SwiftUI", "WeatherKit", "Product Design"],
     image:
-      "https://raw.githubusercontent.com/codearc-studio/vane-website/main/assets/glass-vane-hero.jpg",
-    imageAlt: "Vane weather app glass vane brand artwork",
-    imageClass: "object-cover object-center",
+      "https://raw.githubusercontent.com/codearc-studio/vane-website/main/og.png",
+    imageAlt: "Official Vane social banner artwork",
+    mediaClass: "project-media--vane",
     href: "https://vane.codearc.studio",
     hrefLabel: "Visit Vane",
     source: "https://github.com/codearc-studio/Vane",
   },
   {
     number: "02",
-    name: "RooMate",
-    label: "Student product",
+    name: "dunno.",
+    label: "Shipped iPhone app",
     description:
-      "A school-day companion that brings schedules, events, sports, planning, and the details of campus life into one native experience.",
-    tags: ["macOS", "SwiftUI", "Product Design", "Student Tools"],
-    image:
-      "https://raw.githubusercontent.com/codearc-studio/RooMate/main/Assets/Screenshots/dashboard.png",
-    imageAlt: "RooMate dashboard showing the native macOS student planning app",
-    imageClass: "object-cover object-top",
-    href: "https://roomateafs.app",
-    hrefLabel: "Visit RooMate",
-    source: "https://github.com/codearc-studio/RooMate",
+      "A boredom app built around one simple question: what actually sounds good right now? More than 1,000 curated ideas adapt to your time, energy, situation, and vibe.",
+    tags: ["iPhone", "SwiftUI", "Product Design", "App Store"],
+    image: "/projects/dunno-showcase.png",
+    imageAlt: "Dunno app product showcase with multiple iPhone screens",
+    mediaClass: "project-media--dunno",
+    href: "https://apps.apple.com/app/id6804533655",
+    hrefLabel: "View on App Store",
+    source: "https://github.com/codearc-studio/dunno",
   },
   {
     number: "03",
+    name: "Saved",
+    label: "Product concept",
+    description:
+      "A quiet memory app built around resurfacing the photos and moments you care about, with a rotating memory widget and a simple feed for revisiting your life.",
+    tags: ["iOS", "WidgetKit", "Product Design", "Memories"],
+    image: "/projects/saved-preview.svg",
+    imageAlt: "Saved memory app concept artwork with photo cards and a widget",
+    mediaClass: "project-media--saved",
+    href: null,
+    hrefLabel: null,
+    source: null,
+  },
+  {
+    number: "04",
+    name: "Travel Tracker",
+    label: "Shipped iOS app",
+    description:
+      "A personal travel companion for tracking countries and states, organizing trips, attaching memories, and turning travel history into a visual passport.",
+    tags: ["iOS", "SwiftUI", "Travel", "App Store"],
+    image: "/projects/travel-tracker-preview.svg",
+    imageAlt: "Travel Tracker product artwork with a travel passport, route, and map markers",
+    mediaClass: "project-media--travel",
+    href: "https://apps.apple.com/app/id6758226844",
+    hrefLabel: "View on App Store",
+    source: "https://github.com/codearc-studio/traveltracker",
+  },
+  {
+    number: "05",
+    name: "BrandBook",
+    label: "macOS product",
+    description:
+      "A native home for brand systems: logos, colors, typography, assets, guidelines, and portable brand packages organized in one visual workspace.",
+    tags: ["macOS", "SwiftUI", "SwiftData", "Product Design"],
+    image: "/projects/brandbook-preview.svg",
+    imageAlt: "BrandBook product concept showing a macOS brand workspace",
+    mediaClass: "project-media--brandbook",
+    href: "https://brandbook.codearc.studio/",
+    hrefLabel: "Visit BrandBook",
+    source: null,
+  },
+  {
+    number: "06",
     name: "The Irish Center",
     label: "Client work",
     description:
@@ -44,13 +85,13 @@ const projects = [
     image:
       "https://theirishcenter.org/wp-content/uploads/2026/02/irish-and-american-flags-connection-banner.png?crop=1&h=500&w=885",
     imageAlt: "Philadelphia Irish Center banner artwork",
-    imageClass: "object-cover object-center",
+    mediaClass: "project-media--irish",
     href: "https://codearc.wixstudio.com/theirishcenter",
     hrefLabel: "View redesign",
     source: null,
   },
   {
-    number: "04",
+    number: "07",
     name: "DevShed",
     label: "Developer tool",
     description:
@@ -59,7 +100,7 @@ const projects = [
     image:
       "https://raw.githubusercontent.com/codearc-studio/DevShed/main/banner.png",
     imageAlt: "DevShed macOS utility banner",
-    imageClass: "object-cover object-center",
+    mediaClass: "project-media--devshed",
     href: "https://devshed.codearc.studio",
     hrefLabel: "Visit DevShed",
     source: "https://github.com/codearc-studio/DevShed",
@@ -209,13 +250,13 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="#work"
-                  className="motion-button inline-flex items-center gap-2 rounded-full bg-[color:var(--foreground)] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(16,24,32,0.14)]"
+                  className="button-primary motion-button inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
                 >
                   View my work <span aria-hidden="true">↓</span>
                 </a>
                 <a
                   href="mailto:makai@codearc.studio"
-                  className="motion-button inline-flex items-center gap-2 rounded-full border border-[color:var(--border-strong)] bg-white/70 px-5 py-3 text-sm font-semibold text-[color:var(--foreground)] backdrop-blur-xl"
+                  className="button-secondary motion-button inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
                 >
                   Work with me <span aria-hidden="true">↗</span>
                 </a>
@@ -271,10 +312,10 @@ export default function Home() {
               <p className="motion-fade-up eyebrow">Selected work</p>
               <div className="motion-fade-up motion-d2 space-y-4">
                 <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-5xl">
-                  A few things I&apos;ve designed and shipped.
+                  Things I&apos;ve designed, built, and shipped.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--muted)] sm:text-lg">
-                  A mix of products I&apos;m building myself and client work I&apos;ve shipped through CodeArc.studio.
+                  Shipped apps, products in progress, developer tools, and client work from CodeArc.studio.
                 </p>
               </div>
             </div>
@@ -287,20 +328,22 @@ export default function Home() {
                   className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] lg:grid-cols-[1.18fr_0.82fr]"
                 >
                   <div
-                    className={`relative min-h-[20rem] overflow-hidden bg-[color:var(--media-bg)] sm:min-h-[26rem] lg:min-h-[31rem] ${
+                    className={`project-media relative min-h-[20rem] overflow-hidden sm:min-h-[26rem] lg:min-h-[31rem] ${project.mediaClass} ${
                       index % 2 === 1 ? "lg:order-2" : ""
                     }`}
                   >
-                    <Image
-                      src={project.image}
-                      alt={project.imageAlt}
-                      fill
-                      sizes="(min-width: 1024px) 58vw, 100vw"
-                      className={`${project.imageClass} project-image transition-transform duration-700`}
-                      unoptimized
-                    />
+                    <div className="project-media-frame">
+                      <Image
+                        src={project.image}
+                        alt={project.imageAlt}
+                        fill
+                        sizes="(min-width: 1024px) 58vw, 100vw"
+                        className="project-image object-contain"
+                        unoptimized
+                      />
+                    </div>
                     <div className="project-image-scrim" aria-hidden="true" />
-                    <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-black/20 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-md">
+                    <div className="project-label absolute left-5 top-5 rounded-full px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] backdrop-blur-md">
                       {project.label}
                     </div>
                   </div>
@@ -342,20 +385,26 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-wrap gap-3 border-t border-[color:var(--border)] pt-5">
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="motion-button inline-flex items-center gap-2 rounded-full bg-[color:var(--foreground)] px-4 py-2.5 text-sm font-semibold text-white"
-                      >
-                        {project.hrefLabel} <span aria-hidden="true">↗</span>
-                      </a>
+                      {project.href && project.hrefLabel ? (
+                        <a
+                          href={project.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="button-primary motion-button inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
+                        >
+                          {project.hrefLabel} <span aria-hidden="true">↗</span>
+                        </a>
+                      ) : (
+                        <span className="project-status inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold">
+                          In development
+                        </span>
+                      )}
                       {project.source ? (
                         <a
                           href={project.source}
                           target="_blank"
                           rel="noreferrer"
-                          className="motion-button inline-flex items-center gap-2 rounded-full border border-[color:var(--border-strong)] bg-white/70 px-4 py-2.5 text-sm font-semibold text-[color:var(--foreground)]"
+                          className="button-secondary motion-button inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
                         >
                           Source <span aria-hidden="true">↗</span>
                         </a>
@@ -497,7 +546,7 @@ export default function Home() {
               <div className="motion-fade-up motion-d2 relative grid gap-3">
                 <a
                   href="mailto:makai@codearc.studio"
-                  className="motion-button flex items-center justify-between gap-4 rounded-full bg-white px-5 py-3.5 text-sm font-semibold text-[color:var(--foreground)]"
+                  className="button-on-dark motion-button flex items-center justify-between gap-4 rounded-full px-5 py-3.5 text-sm font-semibold"
                 >
                   makai@codearc.studio <span aria-hidden="true">↗</span>
                 </a>
@@ -505,7 +554,7 @@ export default function Home() {
                   href="https://codearc.studio"
                   target="_blank"
                   rel="noreferrer"
-                  className="motion-button flex items-center justify-between gap-4 rounded-full border border-white/15 px-5 py-3.5 text-sm font-semibold text-white hover:bg-white/5"
+                  className="button-ghost-dark motion-button flex items-center justify-between gap-4 rounded-full px-5 py-3.5 text-sm font-semibold"
                 >
                   CodeArc.studio <span aria-hidden="true">↗</span>
                 </a>
@@ -513,7 +562,7 @@ export default function Home() {
                   href="https://github.com/codearc-studio"
                   target="_blank"
                   rel="noreferrer"
-                  className="motion-button flex items-center justify-between gap-4 rounded-full border border-white/15 px-5 py-3.5 text-sm font-semibold text-white hover:bg-white/5"
+                  className="button-ghost-dark motion-button flex items-center justify-between gap-4 rounded-full px-5 py-3.5 text-sm font-semibold"
                 >
                   GitHub <span aria-hidden="true">↗</span>
                 </a>
@@ -521,7 +570,7 @@ export default function Home() {
                   href="https://g.dev/makai"
                   target="_blank"
                   rel="noreferrer"
-                  className="motion-button flex items-center justify-between gap-4 rounded-full border border-white/15 px-5 py-3.5 text-sm font-semibold text-white hover:bg-white/5"
+                  className="button-ghost-dark motion-button flex items-center justify-between gap-4 rounded-full px-5 py-3.5 text-sm font-semibold"
                 >
                   Google Developer Profile <span aria-hidden="true">↗</span>
                 </a>

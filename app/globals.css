@@ -165,6 +165,87 @@ p {
   min-height: clamp(40rem, calc(100svh - 10rem), 54rem);
 }
 
+/* Explicit button surfaces keep contrast correct regardless of link/visited state. */
+.button-primary {
+  border: 1px solid #111820;
+  background: #111820;
+  color: #ffffff !important;
+  box-shadow: 0 10px 26px rgba(17, 24, 32, 0.14);
+}
+
+.button-primary:visited,
+.button-primary:hover,
+.button-primary:active {
+  color: #ffffff !important;
+}
+
+.button-primary:hover {
+  border-color: #26323d;
+  background: #26323d;
+  box-shadow: 0 14px 34px rgba(17, 24, 32, 0.18);
+}
+
+.button-secondary {
+  border: 1px solid rgba(17, 24, 32, 0.2);
+  background: rgba(255, 255, 255, 0.96);
+  color: #111820 !important;
+  box-shadow: 0 6px 18px rgba(17, 24, 32, 0.055);
+  backdrop-filter: blur(16px);
+}
+
+.button-secondary:visited,
+.button-secondary:hover,
+.button-secondary:active {
+  color: #111820 !important;
+}
+
+.button-secondary:hover {
+  border-color: rgba(17, 24, 32, 0.34);
+  background: #ffffff;
+}
+
+.button-on-dark {
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  color: #111820 !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.button-on-dark:visited,
+.button-on-dark:hover,
+.button-on-dark:active {
+  color: #111820 !important;
+}
+
+.button-on-dark:hover {
+  border-color: #eef3f5;
+  background: #eef3f5;
+}
+
+.button-ghost-dark {
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.055);
+  color: #ffffff !important;
+  backdrop-filter: blur(14px);
+}
+
+.button-ghost-dark:visited,
+.button-ghost-dark:hover,
+.button-ghost-dark:active {
+  color: #ffffff !important;
+}
+
+.button-ghost-dark:hover {
+  border-color: rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.project-status {
+  border: 1px solid var(--border-strong);
+  background: rgba(17, 24, 32, 0.055);
+  color: var(--muted);
+}
+
 .project-card {
   transition:
     transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -178,19 +259,83 @@ p {
   box-shadow: 0 26px 70px rgba(15, 23, 42, 0.09);
 }
 
+/* Project artwork is presented as a full composition, never as a cover crop. */
+.project-media {
+  isolation: isolate;
+  background: var(--media-bg);
+}
+
+.project-media-frame {
+  position: absolute;
+  inset: clamp(1rem, 2.1vw, 2rem);
+  overflow: hidden;
+  border: 1px solid rgba(17, 24, 32, 0.08);
+  border-radius: clamp(1.15rem, 2vw, 1.65rem);
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
 .project-image {
-  filter: saturate(0.96) contrast(1.02);
+  object-fit: contain !important;
+  object-position: center !important;
+  filter: saturate(0.98) contrast(1.01);
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-card:hover .project-image {
-  transform: scale(1.018);
+  transform: scale(1.004);
 }
 
 .project-image-scrim {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(10, 15, 20, 0.18), transparent 36%);
+  display: none;
+}
+
+.project-label {
+  z-index: 3;
+  border: 1px solid rgba(17, 24, 32, 0.12);
+  background: rgba(255, 255, 255, 0.94);
+  color: #111820;
+  box-shadow: 0 7px 18px rgba(17, 24, 32, 0.08);
+}
+
+.project-media--vane {
+  background: linear-gradient(145deg, #f6fbff 0%, #e9f4ff 52%, #edf1ff 100%);
+}
+
+.project-media--dunno {
+  background: radial-gradient(circle at 22% 16%, #3d3553, transparent 42%), #15141a;
+}
+
+.project-media--dunno .project-media-frame,
+.project-media--travel .project-media-frame,
+.project-media--brandbook .project-media-frame {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.project-media--saved {
+  background: linear-gradient(145deg, #f8f2eb 0%, #efe6dc 48%, #e8edf0 100%);
+}
+
+.project-media--travel {
+  background: radial-gradient(circle at 20% 18%, #184b69, transparent 46%), #0d1723;
+}
+
+.project-media--brandbook {
+  background: radial-gradient(circle at 16% 12%, #343434, transparent 42%), #111111;
+}
+
+.project-media--irish {
+  background: linear-gradient(145deg, #eef3ed, #f6f1e8);
+}
+
+.project-media--devshed {
+  background: linear-gradient(145deg, #eef3ff 0%, #e4ebfb 100%);
 }
 
 .contact-orb {
