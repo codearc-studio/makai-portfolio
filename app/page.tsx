@@ -59,10 +59,10 @@ const projects = [
     description:
       "A personal travel companion for tracking countries and states, organizing trips, attaching memories, and turning travel history into a visual passport.",
     tags: ["iOS", "SwiftUI", "Travel", "App Store"],
-    image: "/projects/travel-tracker-preview.svg",
-    imageAlt: "Travel Tracker product artwork with a travel passport, route, and map markers",
-    imageWidth: 1600,
-    imageHeight: 1000,
+    image: "/projects/travel-tracker-banner.png",
+    imageAlt: "Travel Tracker website preview showing the Explore, track, and remember your travels hero and iPhone app preview",
+    imageWidth: 2047,
+    imageHeight: 1214,
     mediaClass: "project-media--travel",
     href: "https://apps.apple.com/app/id6758226844",
     hrefLabel: "View on App Store",
@@ -314,24 +314,14 @@ export default function Home() {
 
             <aside className="availability-card motion-fade-up motion-d2 relative overflow-hidden rounded-[2rem] border border-[color:var(--border)] p-6 shadow-[0_28px_80px_rgba(15,23,42,0.09)] sm:p-8">
               <div className="availability-glow" aria-hidden="true" />
-              <div className="relative flex min-h-[28rem] flex-col">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="availability-pill inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em]">
-                    <span className="status-dot" aria-hidden="true" />
-                    Available
-                  </div>
-                  <span className="text-xs font-medium text-[color:var(--muted)]">
-                    Philadelphia · Remote
-                  </span>
-                </div>
-
-                <div className="my-auto py-10">
-                  <p className="eyebrow">Currently</p>
-                  <h2 className="mt-4 max-w-lg text-[clamp(2.35rem,4vw,4rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[color:var(--foreground)]">
-                    Open to a few good projects.
+              <div className="relative flex min-h-[28rem] flex-col justify-between gap-10">
+                <div className="space-y-5">
+                  <p className="eyebrow">Freelance</p>
+                  <h2 className="max-w-lg text-[clamp(2.35rem,4vw,4rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[color:var(--foreground)]">
+                    Open to projects.
                   </h2>
-                  <p className="mt-5 max-w-md text-base leading-7 text-[color:var(--muted)] sm:text-lg sm:leading-8">
-                    I&apos;m taking on a small number of thoughtful builds through CodeArc.studio, especially products that need both design judgment and implementation.
+                  <p className="max-w-md text-base leading-7 text-[color:var(--muted)] sm:text-lg sm:leading-8">
+                    I take on app, product design, and web work through CodeArc.studio, especially projects where design and implementation need to work together.
                   </p>
                 </div>
 
@@ -350,6 +340,7 @@ export default function Home() {
                     Tell me what you&apos;re building
                     <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">↗</span>
                   </a>
+                  <p className="text-xs font-medium text-[color:var(--muted)]">Philadelphia · Remote</p>
                 </div>
               </div>
             </aside>
@@ -376,11 +367,11 @@ export default function Home() {
                 <article
                   key={project.name}
                   data-motion-section
-                  className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] lg:grid-cols-[1.18fr_0.82fr]"
+                  className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] xl:grid-cols-[1.33fr_0.67fr]"
                 >
                   <div
-                    className={`project-media relative self-start overflow-hidden ${project.mediaClass} ${
-                      index % 2 === 1 ? "lg:order-2" : ""
+                    className={`project-media relative overflow-hidden ${project.mediaClass} ${
+                      index % 2 === 1 ? "xl:order-2" : ""
                     }`}
                   >
                     <Image
@@ -395,11 +386,11 @@ export default function Home() {
                   </div>
 
                   <div
-                    className={`flex flex-col justify-between gap-10 p-7 sm:p-9 lg:p-10 ${
-                      index % 2 === 1 ? "lg:order-1" : ""
+                    className={`project-copy flex flex-col justify-between gap-7 p-7 sm:p-8 xl:p-8 ${
+                      index % 2 === 1 ? "xl:order-1" : ""
                     }`}
                   >
-                    <div className="space-y-7">
+                    <div className="space-y-5">
                       <div className="flex items-start justify-between gap-6">
                         <div>
                           <div className="flex flex-wrap items-center gap-2.5">
@@ -410,7 +401,7 @@ export default function Home() {
                               {project.label}
                             </span>
                           </div>
-                          <h3 className="mt-3 text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-5xl">
+                          <h3 className="mt-3 text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-[2.75rem]">
                             {project.name}
                           </h3>
                         </div>
@@ -419,7 +410,7 @@ export default function Home() {
                         </span>
                       </div>
 
-                      <p className="text-base leading-8 text-[color:var(--muted)] sm:text-lg">
+                      <p className="text-base leading-7 text-[color:var(--muted)] sm:text-[1.05rem] sm:leading-7">
                         {project.description}
                       </p>
 
@@ -590,7 +581,7 @@ export default function Home() {
                   Have something worth building?
                 </h2>
                 <p className="max-w-xl text-base leading-8 text-white/[0.68] sm:text-lg">
-                  I take on selected freelance work through CodeArc.studio. Tell me what you&apos;re trying to make and I&apos;ll tell you if I&apos;m a good fit.
+                  I take on freelance projects through CodeArc.studio. Tell me what you&apos;re trying to make and I&apos;ll tell you if I&apos;m a good fit.
                 </p>
               </div>
 
