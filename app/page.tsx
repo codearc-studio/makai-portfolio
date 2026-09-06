@@ -13,6 +13,8 @@ const projects = [
     tags: ["iOS", "SwiftUI", "WeatherKit", "Product Design"],
     image: "/projects/vane-banner.png",
     imageAlt: "Official Vane banner artwork",
+    imageWidth: 1200,
+    imageHeight: 630,
     mediaClass: "project-media--vane",
     href: "https://vane.codearc.studio",
     hrefLabel: "Visit Vane",
@@ -27,6 +29,8 @@ const projects = [
     tags: ["iPhone", "SwiftUI", "Product Design", "App Store"],
     image: "/projects/dunno-banner.png",
     imageAlt: "Official dunno launch banner artwork",
+    imageWidth: 1200,
+    imageHeight: 630,
     mediaClass: "project-media--dunno",
     href: "https://apps.apple.com/app/id6804533655",
     hrefLabel: "View on App Store",
@@ -41,6 +45,8 @@ const projects = [
     tags: ["iOS", "WidgetKit", "Product Design", "Memories"],
     image: "/projects/saved-banner.png",
     imageAlt: "Saved product banner artwork",
+    imageWidth: 1731,
+    imageHeight: 909,
     mediaClass: "project-media--saved",
     href: null,
     hrefLabel: null,
@@ -55,6 +61,8 @@ const projects = [
     tags: ["iOS", "SwiftUI", "Travel", "App Store"],
     image: "/projects/travel-tracker-preview.svg",
     imageAlt: "Travel Tracker product artwork with a travel passport, route, and map markers",
+    imageWidth: 1600,
+    imageHeight: 1000,
     mediaClass: "project-media--travel",
     href: "https://apps.apple.com/app/id6758226844",
     hrefLabel: "View on App Store",
@@ -69,6 +77,8 @@ const projects = [
     tags: ["macOS", "SwiftUI", "SwiftData", "Product Design"],
     image: "/projects/brandbook-banner.png",
     imageAlt: "BrandBook product banner artwork",
+    imageWidth: 1200,
+    imageHeight: 630,
     mediaClass: "project-media--brandbook",
     href: "https://brandbook.codearc.studio/",
     hrefLabel: "Visit BrandBook",
@@ -83,6 +93,8 @@ const projects = [
     tags: ["Wix Studio", "Web Design", "Client Work", "Accessibility"],
     image: "/projects/irish-center-banner.png",
     imageAlt: "The Irish Center official banner artwork",
+    imageWidth: 1734,
+    imageHeight: 907,
     mediaClass: "project-media--irish",
     href: "https://codearc.wixstudio.com/theirishcenter",
     hrefLabel: "View redesign",
@@ -97,6 +109,8 @@ const projects = [
     tags: ["macOS", "Developer Tools", "Swift", "Utility"],
     image: "/projects/devshed-banner.png",
     imageAlt: "DevShed product banner artwork",
+    imageWidth: 1200,
+    imageHeight: 630,
     mediaClass: "project-media--devshed",
     href: "https://devshed.codearc.studio",
     hrefLabel: "Visit DevShed",
@@ -145,6 +159,40 @@ export default function Home() {
     (typeof certifications)[number] | null
   >(null);
   const [isClosing, setIsClosing] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const updateScrollProgress = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+        setScrollProgress(Math.min(1, Math.max(0, progress)));
+      });
+    };
+
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateScrollProgress);
+      window.removeEventListener("resize", updateScrollProgress);
+    };
+  }, []);
+
+  useEffect(() => {
+    const onPointerMove = (event: PointerEvent) => {
+      document.documentElement.style.setProperty("--pointer-x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--pointer-y", `${event.clientY}px`);
+    };
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onPointerMove);
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -187,6 +235,10 @@ export default function Home() {
 
   return (
     <main id="top" className="relative min-h-screen overflow-x-clip">
+      <div className="scroll-progress" aria-hidden="true">
+        <span style={{ transform: `scaleX(${scrollProgress})` }} />
+      </div>
+      <div className="pointer-glow" aria-hidden="true" />
       <div className="ambient-grid" aria-hidden="true" />
 
       <div className="mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-10">
@@ -260,42 +312,44 @@ export default function Home() {
               </div>
             </div>
 
-            <aside className="motion-fade-up motion-d2 relative overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel-strong)] p-6 shadow-[0_28px_80px_rgba(15,23,42,0.08)] sm:p-8">
-              <div className="hero-orb" aria-hidden="true" />
-              <div className="relative flex min-h-[28rem] flex-col justify-between">
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--muted)]">
-                  <span className="status-dot" aria-hidden="true" />
-                  Available for selected freelance work
+            <aside className="availability-card motion-fade-up motion-d2 relative overflow-hidden rounded-[2rem] border border-[color:var(--border)] p-6 shadow-[0_28px_80px_rgba(15,23,42,0.09)] sm:p-8">
+              <div className="availability-glow" aria-hidden="true" />
+              <div className="relative flex min-h-[28rem] flex-col">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="availability-pill inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.16em]">
+                    <span className="status-dot" aria-hidden="true" />
+                    Available
+                  </div>
+                  <span className="text-xs font-medium text-[color:var(--muted)]">
+                    Philadelphia · Remote
+                  </span>
                 </div>
 
-                <div className="py-12">
-                  <div className="hero-monogram" aria-hidden="true">
-                    M
-                  </div>
+                <div className="my-auto py-10">
+                  <p className="eyebrow">Currently</p>
+                  <h2 className="mt-4 max-w-lg text-[clamp(2.35rem,4vw,4rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[color:var(--foreground)]">
+                    Open to a few good projects.
+                  </h2>
+                  <p className="mt-5 max-w-md text-base leading-7 text-[color:var(--muted)] sm:text-lg sm:leading-8">
+                    I&apos;m taking on a small number of thoughtful builds through CodeArc.studio, especially products that need both design judgment and implementation.
+                  </p>
                 </div>
 
-                <div className="grid gap-4 border-t border-[color:var(--border)] pt-5 sm:grid-cols-2">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--muted-soft)]">
-                      I build
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-[color:var(--foreground)]">
-                      Native apps, web products, and focused tools.
-                    </p>
+                <div className="space-y-5 border-t border-[color:var(--border)] pt-5">
+                  <div className="flex flex-wrap gap-2">
+                    {['Native apps', 'Product design', 'Web builds'].map((item) => (
+                      <span key={item} className="availability-tag rounded-full px-3 py-1.5 text-xs font-semibold">
+                        {item}
+                      </span>
+                    ))}
                   </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--muted-soft)]">
-                      Studio
-                    </p>
-                    <a
-                      className="mt-2 inline-flex text-sm font-semibold text-[color:var(--accent)] hover:underline"
-                      href="https://codearc.studio"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      CodeArc.studio ↗
-                    </a>
-                  </div>
+                  <a
+                    href="mailto:makai@codearc.studio"
+                    className="availability-link group flex items-center justify-between gap-4 rounded-2xl px-4 py-3.5 text-sm font-semibold"
+                  >
+                    Tell me what you&apos;re building
+                    <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">↗</span>
+                  </a>
                 </div>
               </div>
             </aside>
@@ -325,21 +379,19 @@ export default function Home() {
                   className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] lg:grid-cols-[1.18fr_0.82fr]"
                 >
                   <div
-                    className={`project-media relative overflow-hidden ${project.mediaClass} ${
+                    className={`project-media relative self-start overflow-hidden ${project.mediaClass} ${
                       index % 2 === 1 ? "lg:order-2" : ""
                     }`}
                   >
-                    <div className="project-media-frame">
-                      <Image
-                        src={project.image}
-                        alt={project.imageAlt}
-                        fill
-                        sizes="(min-width: 1024px) 58vw, 100vw"
-                        className="project-image object-contain"
-                        unoptimized
-                      />
-                    </div>
-                    <div className="project-image-scrim" aria-hidden="true" />
+                    <Image
+                      src={project.image}
+                      alt={project.imageAlt}
+                      width={project.imageWidth}
+                      height={project.imageHeight}
+                      sizes="(min-width: 1024px) 58vw, 100vw"
+                      className="project-image"
+                      unoptimized
+                    />
                   </div>
 
                   <div
@@ -586,6 +638,15 @@ export default function Home() {
           <p>Designed and built by Makai.</p>
         </footer>
       </div>
+
+      <button
+        type="button"
+        onClick={() => document.getElementById("top")?.scrollIntoView()}
+        className={`back-to-top ${scrollProgress > 0.16 ? "is-visible" : ""}`}
+        aria-label="Back to top"
+      >
+        <span aria-hidden="true">↑</span>
+      </button>
 
       {activeCert ? (
         <div
