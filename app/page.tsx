@@ -11,9 +11,8 @@ const projects = [
     description:
       "Personalized weather that learns what the forecast feels like to you, then turns it into guidance that is actually useful.",
     tags: ["iOS", "SwiftUI", "WeatherKit", "Product Design"],
-    image:
-      "https://raw.githubusercontent.com/codearc-studio/vane-website/main/og.png",
-    imageAlt: "Official Vane social banner artwork",
+    image: "/projects/vane-banner.png",
+    imageAlt: "Official Vane banner artwork",
     mediaClass: "project-media--vane",
     href: "https://vane.codearc.studio",
     hrefLabel: "Visit Vane",
@@ -26,8 +25,8 @@ const projects = [
     description:
       "A boredom app built around one simple question: what actually sounds good right now? More than 1,000 curated ideas adapt to your time, energy, situation, and vibe.",
     tags: ["iPhone", "SwiftUI", "Product Design", "App Store"],
-    image: "/projects/dunno-showcase.png",
-    imageAlt: "Dunno app product showcase with multiple iPhone screens",
+    image: "/projects/dunno-banner.png",
+    imageAlt: "Official dunno launch banner artwork",
     mediaClass: "project-media--dunno",
     href: "https://apps.apple.com/app/id6804533655",
     hrefLabel: "View on App Store",
@@ -40,8 +39,8 @@ const projects = [
     description:
       "A quiet memory app built around resurfacing the photos and moments you care about, with a rotating memory widget and a simple feed for revisiting your life.",
     tags: ["iOS", "WidgetKit", "Product Design", "Memories"],
-    image: "/projects/saved-preview.svg",
-    imageAlt: "Saved memory app concept artwork with photo cards and a widget",
+    image: "/projects/saved-banner.png",
+    imageAlt: "Saved product banner artwork",
     mediaClass: "project-media--saved",
     href: null,
     hrefLabel: null,
@@ -68,8 +67,8 @@ const projects = [
     description:
       "A native home for brand systems: logos, colors, typography, assets, guidelines, and portable brand packages organized in one visual workspace.",
     tags: ["macOS", "SwiftUI", "SwiftData", "Product Design"],
-    image: "/projects/brandbook-preview.svg",
-    imageAlt: "BrandBook product concept showing a macOS brand workspace",
+    image: "/projects/brandbook-banner.png",
+    imageAlt: "BrandBook product banner artwork",
     mediaClass: "project-media--brandbook",
     href: "https://brandbook.codearc.studio/",
     hrefLabel: "Visit BrandBook",
@@ -82,9 +81,8 @@ const projects = [
     description:
       "A website redesign for Philadelphia's Commodore Barry Arts & Cultural Center, built to make a busy community organization easier to explore and maintain.",
     tags: ["Wix Studio", "Web Design", "Client Work", "Accessibility"],
-    image:
-      "https://theirishcenter.org/wp-content/uploads/2026/02/irish-and-american-flags-connection-banner.png?crop=1&h=500&w=885",
-    imageAlt: "Philadelphia Irish Center banner artwork",
+    image: "/projects/irish-center-banner.png",
+    imageAlt: "The Irish Center official banner artwork",
     mediaClass: "project-media--irish",
     href: "https://codearc.wixstudio.com/theirishcenter",
     hrefLabel: "View redesign",
@@ -97,9 +95,8 @@ const projects = [
     description:
       "A native Mac utility for finding and clearing Xcode storage, with enough visibility and control to make cleanup feel safe instead of destructive.",
     tags: ["macOS", "Developer Tools", "Swift", "Utility"],
-    image:
-      "https://raw.githubusercontent.com/codearc-studio/DevShed/main/banner.png",
-    imageAlt: "DevShed macOS utility banner",
+    image: "/projects/devshed-banner.png",
+    imageAlt: "DevShed product banner artwork",
     mediaClass: "project-media--devshed",
     href: "https://devshed.codearc.studio",
     hrefLabel: "Visit DevShed",
@@ -328,7 +325,7 @@ export default function Home() {
                   className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] lg:grid-cols-[1.18fr_0.82fr]"
                 >
                   <div
-                    className={`project-media relative min-h-[20rem] overflow-hidden sm:min-h-[26rem] lg:min-h-[31rem] ${project.mediaClass} ${
+                    className={`project-media relative overflow-hidden ${project.mediaClass} ${
                       index % 2 === 1 ? "lg:order-2" : ""
                     }`}
                   >
@@ -343,9 +340,6 @@ export default function Home() {
                       />
                     </div>
                     <div className="project-image-scrim" aria-hidden="true" />
-                    <div className="project-label absolute left-5 top-5 rounded-full px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] backdrop-blur-md">
-                      {project.label}
-                    </div>
                   </div>
 
                   <div
@@ -356,9 +350,14 @@ export default function Home() {
                     <div className="space-y-7">
                       <div className="flex items-start justify-between gap-6">
                         <div>
-                          <p className="text-xs font-semibold tracking-[0.18em] text-[color:var(--accent)]">
-                            {project.number}
-                          </p>
+                          <div className="flex flex-wrap items-center gap-2.5">
+                            <p className="text-xs font-semibold tracking-[0.18em] text-[color:var(--accent)]">
+                              {project.number}
+                            </p>
+                            <span className="project-label rounded-full px-2.5 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.14em]">
+                              {project.label}
+                            </span>
+                          </div>
                           <h3 className="mt-3 text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-5xl">
                             {project.name}
                           </h3>
