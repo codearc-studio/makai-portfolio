@@ -145,49 +145,15 @@ export default function Home() {
     return () => window.clearTimeout(timeout);
   }, [isClosing]);
 
-  useEffect(() => {
-    const motionSections = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-motion-section]"),
-    );
 
-    if (!motionSections.length) {
-      return;
-    }
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      motionSections.forEach((section) => section.classList.add("motion-visible"));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          entry.target.classList.add("motion-visible");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.14,
-        rootMargin: "0px 0px -6% 0px",
-      },
-    );
-
-    motionSections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <main id="top" className="relative min-h-screen overflow-hidden">
+    <main id="top" className="relative min-h-screen overflow-x-clip">
       <div className="ambient-grid" aria-hidden="true" />
 
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">
+      <div className="mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-10">
         <header className="sticky top-0 z-40 -mx-5 border-b border-[color:var(--border)] bg-[color:var(--nav)] px-5 backdrop-blur-2xl sm:-mx-8 sm:px-8 lg:-mx-10 lg:px-10">
-          <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-5">
+          <div className="mx-auto flex h-[4.5rem] max-w-[90rem] items-center justify-between gap-5">
             <a
               href="#top"
               className="group inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-[color:var(--foreground)]"
@@ -226,7 +192,7 @@ export default function Home() {
         <div className="flex flex-col gap-24 py-12 sm:gap-28 sm:py-16 lg:gap-32 lg:py-20">
           <section
             data-motion-section
-            className="motion-group grid min-h-[calc(100svh-10rem)] items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16"
+            className="hero-section motion-group grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16"
           >
             <div className="motion-fade-up space-y-8">
               <div className="space-y-5">
@@ -305,7 +271,7 @@ export default function Home() {
               <p className="motion-fade-up eyebrow">Selected work</p>
               <div className="motion-fade-up motion-d2 space-y-4">
                 <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-5xl">
-                  The work matters more than the tool list.
+                  A few things I&apos;ve designed and shipped.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--muted)] sm:text-lg">
                   A mix of products I&apos;m building myself and client work I&apos;ve shipped through CodeArc.studio.
