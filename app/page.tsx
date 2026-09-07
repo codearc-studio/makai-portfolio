@@ -367,7 +367,11 @@ export default function Home() {
                 <article
                   key={project.name}
                   data-motion-section
-                  className="motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] xl:grid-cols-2"
+                  className={`motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] ${
+                    index % 2 === 1
+                      ? "xl:grid-cols-[minmax(0,11fr)_minmax(0,14fr)]"
+                      : "xl:grid-cols-[minmax(0,14fr)_minmax(0,11fr)]"
+                  }`}
                 >
                   <div
                     className={`project-media relative overflow-hidden ${project.mediaClass} ${
