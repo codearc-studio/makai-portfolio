@@ -241,22 +241,22 @@ export default function Home() {
       <div className="pointer-glow" aria-hidden="true" />
       <div className="ambient-grid" aria-hidden="true" />
 
-      <div className="mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-10">
-        <header className="sticky top-0 z-40 -mx-5 border-b border-[color:var(--border)] bg-[color:var(--nav)] px-5 backdrop-blur-2xl sm:-mx-8 sm:px-8 lg:-mx-10 lg:px-10">
-          <div className="mx-auto flex h-[4.5rem] max-w-[90rem] items-center justify-between gap-5">
+      <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-8 lg:px-10">
+        <header className="site-header sticky top-0 z-40 -mx-4 border-b border-[color:var(--border)] bg-[color:var(--nav)] px-4 backdrop-blur-2xl sm:-mx-8 sm:px-8 lg:-mx-10 lg:px-10">
+          <div className="mx-auto flex h-16 max-w-[90rem] items-center justify-between gap-3 sm:h-[4.5rem] sm:gap-5">
             <a
               href="#top"
-              className="group inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-[color:var(--foreground)]"
+              className="site-brand group inline-flex items-center gap-2 text-sm font-semibold tracking-tight text-[color:var(--foreground)]"
             >
               <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[color:var(--border-strong)] bg-white text-[0.67rem] font-bold tracking-[-0.04em] shadow-sm transition-transform group-hover:-rotate-3">
                 MO
               </span>
-              <span>Makai O&apos;Neill</span>
+              <span className="site-name-label">Makai O&apos;Neill</span>
             </a>
 
             <nav
               aria-label="Primary navigation"
-              className="flex items-center gap-4 text-xs font-medium text-[color:var(--muted)] sm:gap-6 sm:text-sm"
+              className="flex items-center gap-3 text-xs font-medium text-[color:var(--muted)] sm:gap-6 sm:text-sm"
             >
               <a className="nav-link" href="#work">
                 Work
@@ -279,15 +279,15 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="flex flex-col gap-24 py-12 sm:gap-28 sm:py-16 lg:gap-32 lg:py-20">
+        <div className="flex flex-col gap-16 py-8 sm:gap-28 sm:py-16 lg:gap-32 lg:py-20">
           <section
             data-motion-section
-            className="hero-section motion-group grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16"
+            className="hero-section motion-group grid items-center gap-9 sm:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16"
           >
-            <div className="motion-fade-up space-y-8">
+            <div className="motion-fade-up space-y-7 sm:space-y-8">
               <div className="space-y-5">
                 <p className="eyebrow">Designer + Developer</p>
-                <h1 className="max-w-4xl text-[clamp(3.35rem,8vw,6.9rem)] font-semibold leading-[0.92] tracking-[-0.065em] text-[color:var(--foreground)]">
+                <h1 className="max-w-4xl text-[clamp(2.8rem,14vw,4.6rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-[color:var(--foreground)] sm:text-[clamp(3.35rem,8vw,6.9rem)] sm:leading-[0.92] sm:tracking-[-0.065em]">
                   I build thoughtful digital products.
                 </h1>
               </div>
@@ -299,25 +299,25 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-3">
                 <a
                   href="#work"
-                  className="button-primary motion-button inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
+                  className="hero-action button-primary motion-button inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
                 >
                   View my work <span aria-hidden="true">↓</span>
                 </a>
                 <a
                   href="mailto:makai@codearc.studio"
-                  className="button-secondary motion-button inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
+                  className="hero-action button-secondary motion-button inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold"
                 >
                   Work with me <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
 
-            <aside className="availability-card motion-fade-up motion-d2 relative overflow-hidden rounded-[2rem] border border-[color:var(--border)] p-6 shadow-[0_28px_80px_rgba(15,23,42,0.09)] sm:p-8">
+            <aside className="availability-card motion-fade-up motion-d2 relative overflow-hidden rounded-[1.6rem] border border-[color:var(--border)] p-5 shadow-[0_28px_80px_rgba(15,23,42,0.09)] sm:rounded-[2rem] sm:p-8">
               <div className="availability-glow" aria-hidden="true" />
-              <div className="relative flex min-h-[28rem] flex-col justify-between gap-10">
+              <div className="relative flex min-h-0 flex-col justify-between gap-8 sm:min-h-[28rem] sm:gap-10">
                 <div className="space-y-5">
                   <p className="eyebrow">Freelance</p>
-                  <h2 className="max-w-lg text-[clamp(2.35rem,4vw,4rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-[color:var(--foreground)]">
+                  <h2 className="max-w-lg text-[clamp(2.15rem,10vw,3.2rem)] font-semibold leading-[1] tracking-[-0.05em] text-[color:var(--foreground)] sm:text-[clamp(2.35rem,4vw,4rem)] sm:leading-[0.98] sm:tracking-[-0.055em]">
                     Open to projects.
                   </h2>
                   <p className="max-w-md text-base leading-7 text-[color:var(--muted)] sm:text-lg sm:leading-8">
@@ -353,7 +353,7 @@ export default function Home() {
             >
               <p className="motion-fade-up eyebrow">Selected work</p>
               <div className="motion-fade-up motion-d2 space-y-4">
-                <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-5xl">
+                <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-[color:var(--foreground)] sm:text-5xl sm:tracking-[-0.045em]">
                   Things I&apos;ve designed, built, and shipped.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--muted)] sm:text-lg">
@@ -362,12 +362,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-10 grid gap-7 sm:mt-12">
+            <div className="mt-8 grid gap-5 sm:mt-12 sm:gap-7">
               {projects.map((project, index) => (
                 <article
                   key={project.name}
                   data-motion-section
-                  className={`motion-group motion-fade-up project-card grid overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] ${
+                  className={`motion-group motion-fade-up project-card grid overflow-hidden rounded-[1.5rem] border border-[color:var(--border)] bg-[color:var(--panel)] shadow-[0_16px_50px_rgba(15,23,42,0.055)] sm:rounded-[2rem] ${
                     index % 2 === 1
                       ? "xl:grid-cols-[minmax(0,11fr)_minmax(0,14fr)]"
                       : "xl:grid-cols-[minmax(0,14fr)_minmax(0,11fr)]"
@@ -383,14 +383,13 @@ export default function Home() {
                       alt={project.imageAlt}
                       width={project.imageWidth}
                       height={project.imageHeight}
-                      sizes="(min-width: 1280px) 50vw, 100vw"
+                      sizes="(min-width: 1280px) 56vw, 100vw"
                       className="project-image"
-                      unoptimized
                     />
                   </div>
 
                   <div
-                    className={`project-copy flex flex-col justify-between gap-7 p-7 sm:p-8 xl:p-8 ${
+                    className={`project-copy flex flex-col justify-between gap-6 p-5 sm:gap-7 sm:p-8 xl:p-8 ${
                       index % 2 === 1 ? "xl:order-1" : ""
                     }`}
                   >
@@ -405,7 +404,7 @@ export default function Home() {
                               {project.label}
                             </span>
                           </div>
-                          <h3 className="mt-3 text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-[2.75rem]">
+                          <h3 className="mt-3 text-[2.15rem] font-semibold tracking-[-0.04em] text-[color:var(--foreground)] sm:text-[2.75rem] sm:tracking-[-0.045em]">
                             {project.name}
                           </h3>
                         </div>
@@ -436,7 +435,7 @@ export default function Home() {
                           href={project.href}
                           target="_blank"
                           rel="noreferrer"
-                          className="button-primary motion-button inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
+                          className="project-action button-primary motion-button inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
                         >
                           {project.hrefLabel} <span aria-hidden="true">↗</span>
                         </a>
@@ -450,7 +449,7 @@ export default function Home() {
                           href={project.source}
                           target="_blank"
                           rel="noreferrer"
-                          className="button-secondary motion-button inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
+                          className="project-action button-secondary motion-button inline-flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
                         >
                           Source <span aria-hidden="true">↗</span>
                         </a>
@@ -461,7 +460,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-7 flex justify-end">
+            <div className="mt-6 flex sm:mt-7 sm:justify-end">
               <a
                 href="https://github.com/codearc-studio"
                 target="_blank"
@@ -481,7 +480,7 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:gap-12">
               <p className="motion-fade-up eyebrow">About</p>
               <div className="motion-fade-up motion-d2 space-y-6">
-                <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-[color:var(--foreground)] sm:text-5xl">
+                <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-[color:var(--foreground)] sm:text-5xl sm:tracking-[-0.045em]">
                   I care about the part between “it works” and “it feels finished.”
                 </h2>
                 <div className="max-w-3xl space-y-5 text-base leading-8 text-[color:var(--muted)] sm:text-lg">
@@ -504,7 +503,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-3">
               {capabilities.map((group, index) => (
                 <div
                   key={group.title}
@@ -573,15 +572,15 @@ export default function Home() {
           <section
             id="contact"
             data-motion-section
-            className="motion-group scroll-mt-28 overflow-hidden rounded-[2.25rem] bg-[color:var(--foreground)] text-white shadow-[0_28px_80px_rgba(15,23,42,0.16)]"
+            className="motion-group scroll-mt-24 overflow-hidden rounded-[1.75rem] bg-[color:var(--foreground)] text-white shadow-[0_28px_80px_rgba(15,23,42,0.16)] sm:scroll-mt-28 sm:rounded-[2.25rem]"
           >
-            <div className="relative grid gap-10 p-8 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:p-12">
+            <div className="relative grid gap-8 p-6 sm:gap-10 sm:p-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:p-12">
               <div className="contact-orb" aria-hidden="true" />
               <div className="motion-fade-up relative space-y-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/[0.55]">
                   Contact
                 </p>
-                <h2 className="max-w-2xl text-4xl font-semibold tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl">
+                <h2 className="max-w-2xl text-3xl font-semibold tracking-[-0.045em] text-white sm:text-5xl sm:tracking-[-0.05em] lg:text-6xl">
                   Have something worth building?
                 </h2>
                 <p className="max-w-xl text-base leading-8 text-white/[0.68] sm:text-lg">
@@ -655,7 +654,7 @@ export default function Home() {
             role="dialog"
             aria-modal="true"
             aria-label={activeCert.name}
-            className={`relative max-h-[92vh] w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition-all duration-200 ease-out ${
+            className={`relative max-h-[92dvh] w-full max-w-5xl overflow-hidden rounded-[1.5rem] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition-all duration-200 ease-out sm:rounded-[2rem] ${
               isClosing
                 ? "translate-y-4 scale-[0.98] opacity-0"
                 : "translate-y-0 scale-100 opacity-100"
@@ -665,17 +664,17 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setIsClosing(true)}
-              className="absolute right-4 top-4 z-10 rounded-full border border-black/10 bg-white/[0.92] px-3 py-2 text-xs font-semibold text-black shadow-sm backdrop-blur-md"
+              className="absolute right-3 top-3 z-10 min-h-11 rounded-full border border-black/10 bg-white/[0.92] px-4 py-2 text-xs font-semibold text-black shadow-sm backdrop-blur-md sm:right-4 sm:top-4"
             >
               Close
             </button>
-            <div className="relative aspect-[16/10] max-h-[92vh] w-full">
+            <div className="relative aspect-[16/10] max-h-[92dvh] w-full">
               <Image
                 src={activeCert.certificate}
                 alt={activeCert.name}
                 fill
                 sizes="(min-width: 1024px) 64rem, 100vw"
-                className="object-contain p-4 sm:p-8"
+                className="object-contain p-3 sm:p-8"
               />
             </div>
           </div>

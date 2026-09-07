@@ -546,3 +546,84 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Mobile ergonomics and touch behavior */
+.site-header {
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.site-brand,
+.site-header .nav-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-action,
+.project-action,
+.availability-link,
+.button-on-dark,
+.button-ghost-dark,
+.back-to-top,
+button {
+  touch-action: manipulation;
+}
+
+@media (max-width: 479px) {
+  html {
+    scroll-padding-top: 4.75rem;
+    scrollbar-gutter: auto;
+  }
+
+  .hero-action {
+    width: 100%;
+  }
+
+  .project-action {
+    flex: 1 1 100%;
+    min-height: 44px;
+  }
+
+  .availability-link,
+  .button-on-dark,
+  .button-ghost-dark {
+    min-height: 46px;
+  }
+
+  .project-card .project-label {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-name-label {
+    display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .pointer-glow {
+    display: none;
+  }
+
+  .project-card:hover,
+  .motion-button:hover,
+  .back-to-top:hover,
+  .availability-link:hover {
+    transform: none;
+  }
+
+  .back-to-top {
+    width: 3.05rem;
+    height: 3.05rem;
+  }
+}
+
+@supports (padding: max(0px)) {
+  @media (max-width: 640px) {
+    .back-to-top {
+      right: max(0.9rem, env(safe-area-inset-right));
+      bottom: max(0.9rem, env(safe-area-inset-bottom));
+    }
+  }
+}
